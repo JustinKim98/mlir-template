@@ -1,0 +1,41 @@
+{
+    "version": 8,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 28,
+        "patch": 3
+    },
+    "configurePresets": [
+        {
+            "name": "Debug",
+            "displayName": "Debug build",
+            "description": "Debug build for developing & testing",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS":true
+            },
+            "environment": {
+                "LDFLAGS": "-fuse-ld=lld"
+            }
+        },
+        {
+            "name": "Release",
+            "displayName": "Release build",
+            "description": "Release build for publishing",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "environment": {
+                "LDFLAGS": "-fuse-ld=lld"
+            }
+        }
+    ]
+}

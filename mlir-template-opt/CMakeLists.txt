@@ -6,7 +6,6 @@ set(LIBS
         ${conversion_libs}
         MLIRArithDialect
         MLIROptLib
-        MLIRStandalone
         )
 
 add_llvm_executable(mlir-template-opt mlir-template-opt.cpp)

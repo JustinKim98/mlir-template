@@ -7,12 +7,12 @@
 #ifndef SAMPLE_OPS
 #define SAMPLE_OPS
 
-include "SampleDialect.td"
+include "Sample.td"
 
 class Sample_Op <string mnemonic, list<Trait> traits = []> : 
-    Op<Sample_dialect, mnemonic, traits>;
+    Op<Sample_Dialect, mnemonic, traits>;
 
-def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExamplTrait */]> {
+def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExampleTrait */]> {
     let summary = "Sample operation for defining the operations in mlir";
     let description = [{
         Here, write detailed description about what this operation does, and how its semantics are made
@@ -21,7 +21,7 @@ def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExamplTrait *
     let arguments = (ins I32:$value1, Arg<I32, "example argument", [/*put decorators here*/]>:$value2);
     let results = (outs I32:$result1, Res<I32, "example result", [/*put result decorators here*/]>:$result2);
 
-    let asseblyFormat = [{
+    let assemblyFormat = [{
         $value1 `,` $value2 attr-dict `:` `(` type($value1) `,` type($value2) `)` `->` `(` type($result1) `,` type($result2) `)`
     }];
 
@@ -42,11 +42,11 @@ def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExamplTrait *
     let hasFolder = true;
 
     // Extra declarations for the operation
-    let extraClassDeclarations = [{
+    let extraClassDeclaration = [{
     }];
 
     // Extra definitions for the operations
-    let extraClassDefinitions = [{
+    let extraClassDefinition = [{
     }];
 }
 

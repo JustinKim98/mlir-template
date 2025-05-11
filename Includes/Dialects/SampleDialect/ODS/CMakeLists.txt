@@ -1,8 +1,8 @@
 set(LLVM_TARGET_DEFINITIONS SampleOps.td)
-mlir_tablegen(SampleOps.h.inc -gen-enum-decls)
-mlir_tablegen(SampleOps.cpp.inc -gen-enum-defs)
-mlir_tablegen(SampleOpsAttributes.h.inc -gen-attrdef-decls -attr-defs-dialect=sapmle)
-mlir_tablegen(SampleOpsAttributes.cpp.inc -gen-attrdef-defs -attr-defs-dialect=sapmle)
+mlir_tablegen(SampleOpsEnums.h.inc -gen-enum-decls)
+mlir_tablegen(SampleOpsEnums.cpp.inc -gen-enum-defs)
+mlir_tablegen(SampleOpsAttributes.h.inc -gen-attrdef-decls -attrdefs-dialect=sample)
+mlir_tablegen(SampleOpsAttributes.cpp.inc -gen-attrdef-defs -attrdefs-dialect=sample)
 
 # Adds new mlir dialect (dialect, dialect_namespace)
 # function(add_mlir_dialect dialect dialect_namespace)
@@ -35,6 +35,6 @@ add_mlir_dialect(SampleOps sample)
 #   set_target_properties(${output_file}DocGen PROPERTIES FOLDER "MLIR/Tablegenning/Docs")
 #   add_dependencies(mlir-doc ${output_file}DocGen)
 # endfunction()
-add_mlir_doc(SampleOps SampleOps Dialects/ -gen-dialect-doc)
+add_mlir_doc(Sample Sample Dialects/ -gen-dialect-doc)
 
 

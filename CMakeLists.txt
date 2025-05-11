@@ -13,6 +13,13 @@ set(CMAKE_BUILD_WITH_INSTALL_NAME_DIR ON)
 
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "C++ standard to conform to")
 
+# Override this to FALSE to skip building tests
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+  set(MLIR_TEMPLATE_BUILD_TESTS TRUE)
+else()
+  set(MLIR_TEMPLATE_BUILD_TESTS FALSE)
+endif()
+
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   find_package(MLIR REQUIRED CONFIG)
 
@@ -46,7 +53,7 @@ endif()
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${MLIR_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/Includes)
-include_directories(${PROJECT_BINARY_DIR}/Sources)
+include_directories(${PROJECT_BINARY_DIR}/Includes)
 link_directories(${LLVM_BUILD_LIBRARY_DIR})
 add_definitions(${LLVM_DEFINITIONS})
 
@@ -59,7 +66,12 @@ if(MLIR_ENABLE_BINDINGS_PYTHON)
 endif()
 
 add_subdirectory(Libraries)
-add_subdirectory(Tests)
+
+if(MLIR_TEMPLATE_BUILD_TESTS)
+  message(STATUS "Enabling tests")
+  add_subdirectory(Tests)
+endif()
+
 add_subdirectory(mlir-template-opt)
 # add_subdirectory(mlir-template-plugin)
 add_subdirectory(mlir-template-translate)

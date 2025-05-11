@@ -7,6 +7,8 @@
 #ifndef MLIR_TEMPLATE_SAMPLEINTERFACE
 #define MLIR_TEMPLATE_SAMPLEINTERFACE
 
+include "mlir/IR/OpBase.td"
+
 //===----------------------------------------------------------------------===//
 // Interfaces
 //===----------------------------------------------------------------------===//
@@ -20,8 +22,16 @@ def SampleInterface : OpInterface<"SampleInterface">{
 
     let methods = [
         InterfaceMethod<[{
-            "InterfaceMethod" 
-        }]>
+            Example method for the interface
+        }], 
+        /*retTy=*/"::mlir::LogicalResult",
+        /*methodName=*/"exampleMethod",
+        /*args=*/(ins "std::int64_t":$value),
+        /*methodBody=*/"",
+        /*defaultImplementation=*/[{
+            return success();
+        }]
+        >
     ];
 }
 

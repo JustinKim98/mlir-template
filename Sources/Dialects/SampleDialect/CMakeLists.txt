@@ -3,16 +3,16 @@ set(LLVM_OPTIONAL_SOUIRCES
     SampleOps.cpp
 )
 
-add_mlir_dialect_library(MLIRTemplateSampleDialect
+add_mlir_dialect_library(MLIRSampleDialect
     SampleDialect.cpp
     SampleOps.cpp
     
     ADDITIONAL_HEADER_DIRS
-    ${PROJECT_SOURCE_DIR}/Includes/Dialects/Samp[leDialect
+    ${PROJECT_SOURCE_DIR}/Includes/Dialects/SampleDialect
 
     DEPENDS
-    MLIRTemplateSampleOpsIncGen
-    MLIRTemplateSampleInterfacesIncGen
+    MLIRSampleOpsIncGen
+    # MLIRSampleInterfacesIncGen
 
     LINK_LIBS PUBLIC
     MLIRArithDialect

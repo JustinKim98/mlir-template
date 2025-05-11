@@ -9,6 +9,8 @@
 
 #include "mlir/IR/Dialect.h"
 
+#include "Dialects/SampleDialect/ODS/SampleOpsDialect.h.inc"
+
 namespace mlir{
 
 

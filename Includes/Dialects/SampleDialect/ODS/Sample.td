@@ -7,6 +7,9 @@
 #ifndef SAMPLE_DIALECT 
 #define SAMPLE_DIALECT
 
+include "mlir/IR/EnumAttr.td"
+include "mlir/IR/OpBase.td"
+
 def Sample_Dialect : Dialect {
     let name = "sample";
     let description = [{
@@ -37,9 +40,9 @@ def Sample_Dialect : Dialect {
     // Verify region argument attributes
     let hasRegionArgAttrVerify = false;
     // Extra declaration for the dialect
-    let extaClassDeclaration = [{
-        ::mlir::Type parseType(::mlir::DialectAsmParser& parser) const override;
-        void ::mlir::Type printType(::mlir::Type type, ::mlir::DialectAsmPrinter& printer) const override; 
+    let extraClassDeclaration = [{
+        // ::mlir::Type parseType(::mlir::DialectAsmParser& parser) const override;
+        // void ::mlir::Type printType(::mlir::Type type, ::mlir::DialectAsmPrinter& printer) const override; 
     }];
 }
 

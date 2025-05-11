@@ -5,7 +5,16 @@
 //===----------------------------------------------------------------------===//
 
 #include "Dialects/SampleDialect/SampleDialect.hpp"
+#include "Dialects/SampleDialect/SampleOps.hpp"
 
-namespace mlir{
+#include "Dialects/SampleDialect/ODS/SampleOpsDialect.cpp.inc"
 
+namespace mlir::sample {
+
+void SampleDialect::initialize() {
+  addOperations<
+#define GET_OP_LIST
+#include "Dialects/SampleDialect/ODS/SampleOps.cpp.inc"
+      >();
 }
+} // namespace mlir::sample
