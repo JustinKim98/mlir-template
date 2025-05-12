@@ -25,6 +25,10 @@ def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExampleTrait 
         $value1 `,` $value2 attr-dict `:` `(` type($value1) `,` type($value2) `)` `->` `(` type($result1) `,` type($result2) `)`
     }];
 
+    let builders = [
+        OpBuilder<(ins "mlir::Value":$value1, "mlir::Value":$value2)>
+    ];
+
     // Means this operation has custom vewrifiers
     let hasVerifier = true;
 
