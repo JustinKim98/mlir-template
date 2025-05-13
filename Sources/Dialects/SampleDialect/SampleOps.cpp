@@ -8,16 +8,20 @@
 
 // Implementation for sample operations
 #include "Dialects/SampleDialect/ODS/SampleOps.cpp.inc"
+#include <mlir/IR/BuiltinTypeInterfaces.h>
 
-namespace mlir {
+namespace mlir::sample {
 // Put implementations here
 
-void sample::ExampleOp::build(mlir::OpBuilder &builder,
-                              mlir::OperationState &opState,
-                              const mlir::Value value1,
-                              const mlir::Value value2) {
+void ExampleOp::build(mlir::OpBuilder &builder, mlir::OperationState &opState,
+                      const mlir::Value value1, const mlir::Value value2) {
   const auto i32Ty = builder.getI32Type();
   build(builder, opState, i32Ty, value1, value2);
 }
 
-} // namespace mlir
+mlir::LogicalResult ExampleOp::exampleMethod(const std::int64_t value) {
+  llvm::outs() << "interface method called! value : " << value << "\n";
+  return success();
+}
+
+} // namespace mlir::sample

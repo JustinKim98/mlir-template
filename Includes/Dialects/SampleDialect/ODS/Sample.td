@@ -21,7 +21,7 @@ def Sample_Dialect : Dialect {
     // Set this to true if this dialect includes canonicalizer
     let hasCanonicalizer = true;
     // Set this to true if this dialect includes operations that can be materialized to constant
-    let hasConstantMaterializer = false;
+    let hasConstantMaterializer = true;
     // Set this to true if this dialect will use default printer & parser for attributes
     let useDefaultAttributePrinterParser = true;
     // Set this to true if this dialect will use default printer & parser for types

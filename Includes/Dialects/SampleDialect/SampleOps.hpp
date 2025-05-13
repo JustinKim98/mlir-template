@@ -20,6 +20,9 @@
 #include "mlir/Interfaces/VectorInterfaces.h"
 #include "llvm/ADT/StringExtras.h"
 
+#include "Dialects/SampleDialect/SampleDialect.hpp"
+#include "Interfaces/SampleInterface.hpp"
+
 #define GET_OP_CLASSES
 #include "Dialects/SampleDialect/ODS/SampleOps.h.inc"
 

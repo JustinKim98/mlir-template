@@ -8,17 +8,22 @@
 #define SAMPLE_OPS
 
 include "Sample.td"
+include "Interfaces/SampleInterface.td"
+include "Types/ODS/Types.td"
+
+include "mlir/Interfaces/SideEffectInterfaces.td"
 
 class Sample_Op <string mnemonic, list<Trait> traits = []> : 
     Op<Sample_Dialect, mnemonic, traits>;
 
-def Sample_ExampleOp : Sample_Op<"example", [/*Put traits here eg. ExampleTrait */]> {
+def Sample_ExampleOp : Sample_Op<"example", [DeclareOpInterfaceMethods<SampleInterface>]> {
     let summary = "Sample operation for defining the operations in mlir";
     let description = [{
         Here, write detailed description about what this operation does, and how its semantics are made
     }];
 
-    let arguments = (ins I32:$value1, Arg<I32, "example argument", [/*put decorators here*/]>:$value2);
+    let arguments = (ins I32:$value1, Arg<ConfinedType<AnyType, [IsIntegerPred]>, "example integer argument", 
+        [/*put decorators here*/]>:$value2);
     let results = (outs I32:$result1, Res<I32, "example result", [/*put result decorators here*/]>:$result2);
 
     let assemblyFormat = [{
